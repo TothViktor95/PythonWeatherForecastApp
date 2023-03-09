@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 import requests
 import prometheus_client
 
@@ -13,8 +13,10 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/weather/<city>')
-def get_weather(city):
+# @app.route('/weather/<city>')
+@app.route('/weather.php')
+def get_weather():
+    city = request.args.get('city')
     weather_requests.inc()
     with request_latency.time():
         api_key = 'bedf2102d366dfa5eb4d813db2a059d4'

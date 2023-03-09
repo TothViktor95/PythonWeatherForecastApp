@@ -1,2 +1,20 @@
-docker build -t pythonweatherforecastapp .  
+Terraform RUN:
+main.tf
+
+
+----DOCKER-----
+BUILD
+docker build -t pythonweatherforecastapp . 
+
+RUN
 docker run -p 5000:5000 pythonweatherforecastapp
+
+TAG
+docker tag pythonweatherforecastapp viktor328/pythonweatherforecastapp:dev
+
+PUSH
+docker push viktor328/pythonweatherforecastapp:dev
+
+
+pull the image and run on azure linux VM - that should be automated in Terraform/customdata.tpl:
+docker run -d -p 5000:5000 viktor328/pythonweatherforecastapp:dev

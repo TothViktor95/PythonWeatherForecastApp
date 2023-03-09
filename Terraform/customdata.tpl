@@ -12,4 +12,4 @@ sudo apt-get update -y &&
 sudo sudo apt-get install docker-ce docker-ce-cli containerd.io -y &&
 sudo usermod -aG docker adminuser
 
-
+sudo docker run -d -p 5000:5000 viktor328/pythonweatherforecastapp:dev

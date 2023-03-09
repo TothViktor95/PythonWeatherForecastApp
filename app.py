@@ -23,7 +23,20 @@ def get_weather():
         url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
         response = requests.get(url)
         data = response.json()
-    return jsonify(data)
+    #return jsonify(data)
+
+    # Extract relevant data from response
+    weather = data['weather'][0]['description']
+    temp = data['main']['temp']
+    feels_like = data['main']['feels_like']
+    humidity = data['main']['humidity']
+    pressure = data['main']['pressure']
+        
+    # Render UI with weather data
+    return render_template('weatherResult.html', city=city, weather=weather, temp=temp, feels_like=feels_like, humidity=humidity, pressure=pressure)
+
+
+
 
 
 @app.route('/metrics')

@@ -1,0 +1,1 @@
+helm install forecast-chart . --values env/values-dev.yaml

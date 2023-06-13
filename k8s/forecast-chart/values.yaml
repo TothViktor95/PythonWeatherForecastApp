@@ -1,0 +1,12 @@
+replicaCount: 2
+
+image:
+  repository: viktor328/pythonweatherforecastapp
+  tag: "dev"
+  pullPolicy: IfNotPresent
+
+service:
+  name: forecast-chart-service
+  type: ClusterIP
+  port: 80
+  targetPort: 5000

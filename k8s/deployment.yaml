@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
+  name: forecast
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: my-app
+      app: forecast
   template:
     metadata:
       labels:
-        app: my-app
+        app: forecast
     spec:
       containers:
-        - name: my-app
+        - name: forecast
           image: viktor328/pythonweatherforecastapp:dev
           ports:
             - containerPort: 8080

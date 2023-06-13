@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: forecast-ingress
+spec:
+  rules:
+    - host: forecastapp.com   # Replace with your desired hostname
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: forecast-service
+                port:
+                  number: 80

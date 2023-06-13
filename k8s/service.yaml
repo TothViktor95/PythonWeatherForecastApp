@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-app-service
+  name: forecast-service
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   selector:
-    app: my-app
+    app: forecast
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080
-  type: LoadBalancer
+      targetPort: 5000

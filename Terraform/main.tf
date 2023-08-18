@@ -133,12 +133,13 @@ resource "azurerm_linux_virtual_machine" "AzureUbuntuServer1" {
   }
 
   provisioner "local-exec" {
-    command = templatefile("windows-ssh-script.tpl", {
+    command = templatefile("ubuntu-ssh-script.tpl", {
       hostname = self.public_ip_address,
       user = "adminuser",
       identityfile = "~/.ssh/tf_azure1_key"
     })
-    interpreter = ["Powershell", "-Command"]
+    # interpreter = ["Powershell", "-Command"] # windows
+      interpreter = [ "bash", "-c" ]   # linux
   }
 
   tags = {
